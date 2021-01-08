@@ -13,8 +13,6 @@ function createSignature(config) {
     var ts = Math.floor(Date.now() / 1000);
     const signature = crypto.createHmac('sha256',  APP_SECRET_KEY);
     signature.update(ts + config.method.toUpperCase() + config.url);
-
-    console.log()
  
     if (config.data instanceof FormData) {
       signature.update (config.data.getBuffer());
@@ -31,12 +29,10 @@ function createSignature(config) {
 
 axios.interceptors.request.use(createSignature)
 
-const externalUserId = 'AntonId' + Math.random()
-
-
 async function main() {
 
     console.log("Creating applicant")
+    const externalUserId = 'AntonId' + Math.random()
     const createUserResponse = await axios({
         baseURL: HOST_URL,
         url:'/resources/applicants?levelName=' + APP_LEVEL_NAME,
