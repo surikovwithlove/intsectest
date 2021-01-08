@@ -27,7 +27,7 @@ function createSignature(config) {
     config.headers['X-App-Access-Sig'] = signature.digest('hex');
     config.headers['X-App-Token'] = APP_TOKEN
   
-    return config;
+    return config;   
   }
 
 //Adding authorization headers for every request made by axios
@@ -98,7 +98,7 @@ async function main() {
     // Created try catch to capture error
 
     // Seems like the authorization tokens should be set up differenlty from the way that we did
-    // for the requests above.
+    // for the requests above :(
     try{
         const applicantApproveResponse = await axios({
             baseURL: HOST_URL,
