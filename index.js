@@ -99,22 +99,19 @@ async function main() {
 
     // Seems like the authorization tokens should be set up differenlty from the way that we did
     // for the requests above :(
-    try{
         const applicantApproveResponse = await axios({
             baseURL: HOST_URL,
             url:'/resources/applicants/' + applicantId + '/status/testCompleted',
             method: 'POST',
-
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
             data: JSON.stringify({
                 reviewAnswer: "GREEN",
                 rejectLabels: []
             })
         })
-    }
-    catch (e) {
-        console.log("ERROR: ", e.response.data)
-    }
-
 }
 
 main()
