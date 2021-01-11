@@ -112,6 +112,8 @@ async function main() {
                 rejectLabels: []
             })
         })
+
+        console.log('Applicant approved with response ' + JSON.stringify(applicantApproveResponse.data))
 }
 
 main()
